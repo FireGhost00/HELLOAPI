@@ -1,5 +1,12 @@
 **FREE
-Ctl-opt nomain;
+Ctl-Opt nomain;
+
+//****************************************************************
+//* Programa: SRVPGM01.rpgle
+//* Descripcion: Servicio Greeting 
+//****************************************************************
+
+
 
 /Copy 'qcpysrc/SRVPGM01P'
 
@@ -11,7 +18,6 @@ Dcl-proc Greeting Export;
 
   Out_greeting = 'Hola, Como estas?' + %trim(In_name) + '? Bienvenido a RPGLE.';
 
-
-
+  Return;
 
 End-proc;
