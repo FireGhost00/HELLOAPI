@@ -10,7 +10,7 @@
   },
   {
     "name": "Create RPGLE Module with PCML",
-    "command": "CRTRPGMOD MODULE(&CURLIB/&NAME) SRCSTMF('&RELATIVEPATH') OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTCCSID(*JOB) PGMINFO(*PCML) INFOSTMF('/home/alvarodev/&NAME.PCML')",
+    "command": "CRTRPGMOD MODULE(&CURLIB/&NAME) SRCSTMF('&RELATIVEPATH') OPTION(*EVENTF) DBGVIEW(*SOURCE) TGTCCSID(*JOB) PGMINFO(*PCML) INFOSTMF('/home/ngomez10/&NAME.PCML')",
     "deployFirst": true,
     "environment": "ile",
     "extensions": [
