@@ -52,8 +52,78 @@ monitor;
        Ou_Message = 'Cliente con codigo ' + %trim(In_Code) + ' encontrado exitosamente.';
     endif;  
 
-  Return;
+  //Return;
 End-proc;
+
+
+//****************************************************************
+// 2. Obtener todos los clientes
+//****************************************************************
+
+Dcl-proc Get_AllCus Export;
+  Dcl-pi Get_AllCus;
+    Ou_lst_Customer likeds(Ds_Customer) dim(10);
+  end-pi;
+
+    clear Ou_lst_Customer;
+
+     // Cargar informacion de clientes  
+    loadCustomers();
+
+    Ou_lst_Customer = LstCustomers;
+
+
+End-proc;
+
+
+
+//****************************************************************
+//3. Obtener informacion del cliente por identificacion
+//****************************************************************
+
+Dcl-proc Find_Customer Export;
+  Dcl-pi Find_Customer int(10);
+        In_Indentification char(10);
+        Ou_infoCustomer likeds(Ds_Customer);
+        Ou_Message char(100);
+  end-pi;
+
+    dcl-s codeError int(10);
+    dcl-s code int(10);
+    clear Ou_infoCustomer;
+    clear Ou_Message;
+    codeError = 0;
+
+   monitor;
+
+   code = %dec(In_Indentification:10:0);
+   on-error;
+      Ou_Message = 'Error: Codigo de cliente invalido.';
+      codeError = 1;
+      //return;
+   endmon;   
+
+   // Cargar informacion de clientes
+   loadCustomers();   
+    if code <= 10;
+    Ou_infoCustomer.name = LstCustomers(code).name;
+    Ou_infoCustomer.lastName = LstCustomers(code).lastName;
+    Ou_infoCustomer.dob = LstCustomers(code).dob;
+    Ou_infoCustomer.address = LstCustomers(code).address;
+    else;
+      Ou_Message = 'Error: Cliente con codigo ' + %trim(In_Indentification) + ' no encontrado.';
+      codeError = 2;
+    endif;
+
+    if Ou_Message = *blanks;
+       Ou_Message = 'Cliente con codigo ' + %trim(In_Indentification) + ' encontrado exitosamente.';
+       codeError = 0;
+    endif;   
+
+    return codeError;
+End-proc;
+
+
 
 //*****************************************************************
 // carga informacion de cliente
