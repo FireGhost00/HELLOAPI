@@ -16,7 +16,7 @@ Dcl-proc Greeting Export;
        Out_greeting char(100);
   end-pi;
 
-  Out_greeting = 'Hola, Como estas?' + %trim(In_name) + '? Bienvenido a RPGLE.';
+  Out_greeting = 'Hola, ' + %trim(In_name) + ' Bienvenido a RPGLE.';
 
   Return;
 
