@@ -1,0 +1,14 @@
+{
+  "name": "HELLOAPI",
+  "objectLibrary": "NGOMEZ101",
+  "libraryList": ["QGPL", "QTEMP", "GAMES400"],
+  "sourcePath": "builds/HELLOAPI",
+  "deploy": {
+    "strategy": "copy",
+    "copy": {
+      "remotePath": "/home/NGOMEZ10/builds/HELLOAPI",
+      "autoSave": true,
+      "defaultCCSID": 819
+    }
+  }
+}

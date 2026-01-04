@@ -13,7 +13,7 @@
 
         // 1. Obtener cliente por codigo
         dcl-pr Get_Customer;
-            In_Code zoned(10);
+            In_Code char(10);
             Ou_infoCustomer likeds(Ds_Customer);
             Ou_Message char(100);
         end-pr;
